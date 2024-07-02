@@ -1,0 +1,204 @@
+com.google.common.util.concurrent.Futures$FutureCombiner
+com.google.common.util.concurrent.ClosingFuture$Combiner
+java.awt.image.ComponentColorModel
+# Soot can not handle a part of classes in a package,
+# which would cause soot throws a runtime exception.
+# We list those classes here in order to avoid this exception.
+# Also, add some heuristic blacklist for fragment generation
+weblogic.ant.taskdefs.webservices.servicegen.ServiceGenTask
+weblogic.security.providers.credentials.filestore.FileStore
+weblogic.security.RealmRuntime
+weblogic.security.UserLockoutManagerRuntime
+javax.management.openmbean.OpenMBeanParameterInfoSupport
+com.rsa.jcp.OCSP
+weblogic.ant.taskdefs.iiop.Ipaddress
+weblogic.wsee.jws.wlw.schemas.soap12.impl.EnvelopeImpl
+com.rsa.jsafe.JSAFE_KeyPair
+weblogic.wsee.jaxws.client.async.HandlerInvokerFactory$HandlerInvokerImpl$2
+weblogic.management.commandline.tools.JDBCCommandLineInvoker
+jsp_servlet._errors.__404
+weblogic.connector.security.layer.AdapterLayer
+weblogic.servlet.internal.session.JDBCSessionData
+weblogic.wsee.security.policy.assertions.xbeans.impl.MessageAgeDocumentImpl$MessageAgeImpl
+weblogic.security.providers.xacml.authorization.XACMLPolicyManagementDelegate
+com.rsa.jsafe.JSAFE_PublicKey
+weblogic.wsee.jaxws.framework.jaxrpc.SOAPMessageRefactor
+weblogic.security.providers.authentication.LDAPAtnDelegate
+weblogic.deploy.api.spi.config.DescriptorSupportManager
+com.rsa.jsafe.JSAFE_Parameters
+weblogic.cluster.migration.management.MigrationTask
+weblogic.sybaseutil.ddar
+com.rsa.jsafe.crl.X509CRLEntryExtensionSpec
+com.rsa.jsafe.crl.X509CRLExtensionSpec
+weblogic.jms.extensions.JMSModuleHelper
+weblogic.t3.srvr.JRockitRuntime
+com.rsa.jsafe.provider.SensitiveData
+weblogic.management.utils.GenericBeanListener
+com.rsa.jsafe.JSAFE_SymmetricCipher
+weblogic.management.security.ProviderMBeanImpl$Helper
+weblogic.ant.taskdefs.webservices.TaskUtils
+weblogic.jdbc.common.internal.JDBCService
+weblogic.management.security.ImportMBeanImpl$Helper
+com.rsa.jsafe.JSAFE_PrivateKey
+com.rsa.jsafe.JSAFE_KeyWrapCipher
+weblogic.servlet.internal.session.SessionContext
+weblogic.management.commandline.tools.ServerInfoCommandLineInvoker
+com.rsa.jsafe.cert.DistributionPoint
+com.rsa.jsafe.cert.CertRequestFactory
+com.rsa.jsafe.cert.AuthorityKeyIdentifier
+com.rsa.jsafe.cert.GeneralName
+com.rsa.jsafe.cert.X509ExtensionRequestSpec
+sun.awt.datatransfer.DataTransferer
+weblogic.xml.dom.DOMStreamReaderExt
+jdk.nashorn.internal.objects.NativeDate
+com.rsa.jsafe.JSAFE_MessageDigest
+weblogic.security.providers.xacml.PolicyCollectionHandlerImpl
+weblogic.servlet.internal.session.SessionData
+weblogic.transaction.internal.SubCoordinatorImpl
+weblogic.nodemanager.server.AbstractServerManager
+weblogic.wsee.wstx.wsat.WSATXAResource
+weblogic.wsee.util.WLMessageFactory
+weblogic.transaction.internal.ServerCoordinatorDescriptorManagerImpl
+com.rsa.cryptoj.f
+weblogic.management.commandline.tools.ClusterAdminCommandLineInvoker
+weblogic.wtc.tbridge.tBexec
+weblogic.security.providers.credentials.PKICredentialMapperStoreHelper
+weblogic.servlet.security.internal.WebAppSecurityJacc
+weblogic.ant.taskdefs.j2ee.Ejbc
+weblogic.management.mbeanservers.compatibility.internal.EditServiceInterceptor
+weblogic.wsee.wstx.wsat.tube.WSATClientHelper
+weblogic.wsee.tools.wseegen.schemas.impl.ListenerTypeImpl
+weblogic.wsee.jws.wlw.schemas.soap12.impl.RelayAttributeImpl
+jsp_servlet._framework._skeletons._wlsconsole.__footer
+weblogic.wsee.deploy.SecurityRoleAndPolicyHelper
+weblogic.cache.filter.CacheFilter
+weblogic.security.providers.xacml.authorization.XACMLAuthorizerImpl
+weblogic.management.logging.LogRuntime
+weblogic.management.remote.common.ClientProviderBase
+weblogic.security.providers.authentication.DefaultAuthenticationProviderImpl
+com.bluecast.xml.PiccoloLexer
+weblogic.transaction.internal.PlatformHelperImpl
+weblogic.cluster.MulticastManager
+weblogic.transaction.internal.CoordinatorImpl_WLSkel
+weblogic.management.configuration.DomainMBeanImpl$Helper
+weblogic.management.configuration.WTCServerMBeanBinder
+weblogic.management.configuration.KernelMBeanImpl$Helper
+weblogic.management.configuration.JMSQueueMBeanImplBeanInfo
+weblogic.management.configuration.ServerMBeanImplBeanInfo
+weblogic.management.configuration.ServerDebugMBeanBinder
+weblogic.management.configuration.CacheAsyncListenersMBeanImpl$Helper
+jdk.nashorn.internal.codegen.Label$Stack
+jdk.nashorn.internal.codegen.OptimisticTypesPersistence$2
+jdk.nashorn.internal.codegen.Lower$3
+jdk.nashorn.internal.codegen.OptimisticTypesPersistence
+jdk.nashorn.internal.codegen.FieldObjectCreator
+jdk.nashorn.internal.codegen.AssignSymbols$1
+weblogic.management.provider.internal.RuntimeAccessImpl
+weblogic.management.provider.internal.EditAccessImpl
+weblogic.management.internal.RemoteRealmManagerImpl_WLSkel
+weblogic.management.provider.internal.EditAccessImpl
+weblogic.security.providers.xacml.authorization.PolicyDecisionPointFactory
+weblogic.security.providers.xacml.authorization.XACMLRoleMapperImpl
+weblogic.security.providers.xacml.authorization.XACMLRoleMapperMBeanImplBeanInfo
+weblogic.jdbc.db2.drda.ddc$1
+weblogic.jdbc.db2.drda.ddg
+weblogic.jdbc.db2.drda.ddaq
+weblogic.jdbc.db2.drda.ddp
+weblogic.jdbc.db2.drda.dds
+weblogic.jdbc.db2.drda.ddb
+weblogic.transaction.internal.CoordinatorImpl
+weblogic.entitlement.data.ldap.EData
+weblogic.wsee.tools.wseegen.schemas.impl.HandlerChainTypeImpl
+weblogic.wsee.tools.wseegen.schemas.impl.HandlerConfigImpl
+weblogic.metadata.management.AnnotationProxy
+jsp_servlet._errors.__503
+weblogic.security.providers.xacml.VersionableApplicationProviderHelper
+weblogic.management.mbeanservers.internal.MBeanTypeServiceImpl
+weblogic.security.providers.pk.file.StoreEntry
+weblogic.jdbc.common.internal.DataSourceRuntimeMBeanImpl
+weblogic.wsee.tools.wseegen.schemas.impl.ListenerListTypeImpl
+weblogic.wsee.jaxws.client.async.AsyncTransportProvider
+weblogic.management.mbeanservers.domainruntime.internal.MBeanServerConnectionManager
+weblogic.messaging.interception.internal.Association
+weblogic.aspects.AspectJ
+weblogic.db2util.ddai
+weblogic.diagnostics.instrumentation.InstrumentationScope
+org.xmlsoap.schemas.soap.encoding.impl.QNameImpl
+weblogic.informixutil.ddaj
+weblogic.jsp.internal.jsp.tag.TagLibInfoEx
+weblogic.xml.registry.XMLService
+weblogic.nodemanager.server.SSLConfig
+weblogic.wsee.tools.wseegen.schemas.impl.ConfigTypeImpl
+weblogic.cache.tag.CacheTag
+weblogic.wsee.jws.wlw.schemas.soap12.impl.SubcodeImpl
+weblogic.security.providers.authentication.shared.DBMSUtils
+weblogic.security.providers.authentication.DBMSSQLAuthenticatorDelegateImpl
+com.rsa.cryptoj.c
+weblogic.management.provider.internal.RuntimeAccessDeploymentReceiverService
+weblogic.security.providers.saml.SAMLAssert
+java.awt.datatransfer.DataFlavor
+com.rsa.jsafe.JSAFE_Recode
+weblogic.security.providers.authentication.shared.DBMSSQLRuntimeQueryImpl
+com.rsa.jsafe.JSAFE_Signature
+org.xmlsoap.schemas.soap.encoding.impl.GMonthImpl
+com.bea.netuix.xbeans.netuix.impl.BodyTypeImpl
+com.bea.wsrp.proxy.ProxyBase
+com.bea.netuix.xbeans.netuix.impl.MarkupDocumentImpl$MarkupImpl
+com.bea.common.security.xacml.PolicyUtils
+weblogic.wsee.jws.conversation.database.OracleTableAccess
+weblogic.messaging.interception.internal.InterceptionServiceImpl
+weblogic.wsee.reliability2.sequence.DestinationMessageInfo
+com.bea.p13n.model.XmlObjectModel
+com.bea.p13n.rules.schema.impl.ActionsDocumentImpl$ActionsImpl
+weblogic.wsee.tools.wseegen.schemas.impl.ConfigDocumentImpl
+com.bea.wsrp.common.wsee.handlers.BasePolicySelectionHandler
+com.bea.wsrp.wlp.extensions.impl.BooleanPropertyDocumentImpl$BooleanPropertyImpl
+weblogic.wsee.tools.wseegen.schemas.impl.HandlerConfigTypeImpl
+com.bea.wsrp.wsdl.ContainerAwareWsdlInfoImpl
+com.bea.wsrp.wsdl.WsdlInfoImpl
+com.bea.wsrp.wsdl.FixupWsdlParser
+weblogic.deploy.api.spi.config.DeploymentConfigurationImpl
+weblogic.wsee.tools.wseegen.schemas.impl.DeploymentListenersTypeImpl
+com.bea.console.actions.jms.safdestination.create.Flow
+weblogic.servlet.FileServlet
+org.apache.dubbo.remoting.transport.netty.NettyHandler
+jdk.nashorn.internal.runtime
+weblogic.management.scripting
+org.apache.click.service.ClickResourceService
+org.apache.dubbo.metadata.store.redis.RedisMetadataReport
+org.apache.dubbo.remoting.zookeeper.curator.CuratorZookeeperClient
+org.apache.dubbo.remoting.transport.codec.CodecAdapter
+com.sun.org.apache.xalan.internal.xsltc.trax.Util
+jdk.nashorn.internal.objects.NativeJSON
+org.apache.click.element.JsScript
+com.google.rpc.ErrorInfo
+sun.net.www.protocol.https.HttpsClient
+org.apache.dubbo.config.spring.beans.factory.'annotation'.ServiceAnnotationPostProcessor$ScanExcludeFilter
+org.apache.dubbo.config.spring.context.properties.DefaultDubboConfigBinder
+org.apache.dubbo.config.spring.beans.factory.'annotation'.ReferenceAnnotationBeanPostProcessor
+org.apache.dubbo.config.spring.context.DubboSpringInitializer
+org.apache.dubbo.registry.xds.util.protocol.impl.EdsProtocol
+org.springframework.web.context.request.ServletRequestAttributes
+sun.security.provider.certpath.CrlRevocationChecker
+io.netty.util.internal.PriorityQueue
+io.netty.util.internal.shaded.org.jctools.queues.atomic.AtomicReferenceArrayQueue
+io.netty.util.internal.shaded.org.jctools.queues.atomic.AtomicReferenceArrayQueue
+org.eclipse.jetty.server.handler.BufferedResponseHandler$BufferedInterceptor$1
+jline.ConsoleReader
+void close()
+java.lang.Object clone()
+void run()
+void execute(java.lang.Runnable)
+void flush()
+java.lang.Object call()
+java.lang.Object next()
+java.util.Iterator iterator()
+boolean hasNext()
+java.util.Set entrySet()
+java.lang.Object nextElement()
+boolean hasMoreElements()
+boolean hasMore()
+int size()
+# java.lang.Object getKey()
+# java.lang.Object getValue()
+boolean isEmpty()

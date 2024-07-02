@@ -1,0 +1,2309 @@
+{
+  "taintSpreadRuleUnits": [
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Object: java.lang.Class getClass()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Class: java.lang.reflect.Method[] getDeclaredMethods()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Iterator: boolean hasNext()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.net.URL: void \u003cinit\u003e(java.lang.String)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1,
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cbsh.NameSpace: bsh.BshMethod getMethod(java.lang.String,java.lang.Class[],boolean)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003csun.rmi.transport.tcp.TCPEndpoint: sun.rmi.transport.tcp.TCPEndpoint readHostPortFormat(java.io.DataInput)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003corg.jboss.weld.interceptor.spi.metadata.InterceptorMetadata: org.jboss.weld.interceptor.proxy.InterceptorInvocation getInterceptorInvocation(java.lang.Object,org.jboss.weld.interceptor.spi.metadata.InterceptorMetadata,org.jboss.weld.interceptor.spi.model.InterceptionType)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Map: java.util.Collection values()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.net.URL: java.io.InputStream openStream()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Class: java.lang.Class forName(java.lang.String,boolean,java.lang.ClassLoader)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Class: java.lang.reflect.Constructor[] getDeclaredConstructors()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.PropertyDescriptor: java.lang.reflect.Method getReadMethod()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Map: java.util.Set keySet()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "1": [
+          0,
+          1
+        ]
+      },
+      "paramsBeTainted": {
+        "1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "1": [
+          {
+            "isMutable": true,
+            "key": 1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "java.beans.PropertyDescriptor getPropertyDescriptor(java.lang.Object,java.lang.String)",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 2,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "java.beans.PropertyDescriptor[] getPropertyDescriptors(java.lang.Class)",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 2,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.String: java.lang.String substring(int)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Class: java.lang.Class getSuperclass()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003corg.jboss.interceptor.proxy.InterceptorInvocation: void \u003cinit\u003e(java.lang.Object,org.jboss.interceptor.spi.metadata.InterceptorMetadata,org.jboss.interceptor.spi.model.InterceptionType)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.io.ByteArrayInputStream: void \u003cinit\u003e(byte[])\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.Introspector: java.beans.BeanInfo getBeanInfo(java.lang.Class,java.lang.Class,int)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003csun.rmi.transport.DGCClient$EndpointEntry: sun.rmi.transport.DGCClient$EndpointEntry lookup(sun.rmi.transport.Endpoint)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": false,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.Introspector: java.beans.BeanInfo getBeanInfo(java.lang.Class,int)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.io.ObjectInputStream: void \u003cinit\u003e(java.io.InputStream)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.PropertyDescriptor: java.lang.String getBaseName()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.PropertyDescriptor: java.lang.String getName()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.String: java.lang.String replace(char,char)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          0
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": 0
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Collection: java.lang.Object[] toArray(java.lang.Object[])\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.BeanInfo: java.beans.PropertyDescriptor[] getPropertyDescriptors()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "java.beans.PropertyDescriptor[] getPropertyDescriptors(java.lang.Object)",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 2,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.Introspector: java.beans.BeanInfo getBeanInfo(java.lang.Class,java.lang.Class)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Map: java.lang.Object get(java.lang.Object)\u003e",
+      "extendFlag": false,
+      "methodSigs": [
+        "\u003ccom.sun.net.httpserver.Headers: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.Collections$SynchronizedMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003csun.misc.SoftCache: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.sun.xml.internal.ws.handler.MessageUpdatableContext: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.text.AttributedString$AttributeMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.EnumMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.TreeMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.concurrent.ConcurrentSkipListMap$SubMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.AbstractMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.sun.xml.internal.ws.api.message.Packet$1: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.TreeMap$NavigableSubMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjavax.swing.UIDefaults$TextAndMnemonicHashMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.concurrent.ConcurrentHashMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.jar.Attributes: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjavax.swing.UIDefaults: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjavax.script.SimpleBindings: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.concurrent.ConcurrentSkipListMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.IdentityHashMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003csun.util.PreHashedMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjavax.management.openmbean.TabularDataSupport: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.lang.ProcessEnvironment$StringEnvironment: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.LinkedHashMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.security.Provider: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjavax.swing.MultiUIDefaults: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.Collections$SingletonMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.Collections$UnmodifiableMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.Map: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.sun.xml.internal.stream.writers.XMLStreamWriterImpl: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjavax.script.Bindings: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.Collections$EmptyMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.HashMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.oracle.webservices.internal.api.message.BasePropertySet$MapView: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.sun.xml.internal.ws.server.EndpointMessageContextImpl: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.sun.org.apache.xerces.internal.impl.xs.util.XSNamedMapImpl: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003corg.jboss.weld.util.collections.ArraySetMultimap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.sun.xml.internal.ws.handler.MessageContextImpl: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.awt.RenderingHints: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.sun.java.util.jar.pack.PropMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.rmi.server.RemoteObjectInvocationHandler$MethodToHash_Maps$1: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003csun.net.httpserver.UnmodifiableHeaders: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.oracle.webservices.internal.api.message.BaseDistributedPropertySet$DistributedMapView: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003ccom.sun.xml.internal.ws.client.ResponseContext: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.Collections$CheckedMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjava.util.WeakHashMap: java.lang.Object get(java.lang.Object)\u003e",
+        "\u003cjdk.internal.org.objectweb.asm.commons.JSRInlinerAdapter$Instantiation: java.lang.Object get(java.lang.Object)\u003e"
+      ],
+      "needInfluenceCheck": true,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.String: java.lang.String substring(int,int)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.FeatureDescriptor: java.lang.String getName()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.String: java.lang.String trim()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003csun.rmi.transport.tcp.TCPEndpoint: sun.rmi.transport.tcp.TCPEndpoint read(java.io.ObjectInput)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.StringBuilder: java.lang.String toString()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.String: java.lang.String[] split(java.lang.String)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "1": [
+          1
+        ]
+      },
+      "paramsBeTainted": {
+        "1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "1": [
+          {
+            "isMutable": true,
+            "key": 1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.Statement: java.lang.reflect.Method getMethod(java.lang.Class,java.lang.String,java.lang.Class[])\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Class: java.lang.String getName()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Iterator: java.lang.Object next()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Class: java.lang.Class forName(java.lang.String)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "interceptor.proxy.SimpleInterceptionChain: void \u003cinit\u003e",
+      "extendFlag": false,
+      "methodSigs": [
+        "\u003corg.jboss.weld.interceptor.proxy.SimpleInterceptionChain: void \u003cinit\u003e(java.util.Collection,java.lang.Object,java.lang.reflect.Method)\u003e",
+        "\u003corg.jboss.interceptor.proxy.SimpleInterceptionChain: void \u003cinit\u003e(java.util.Collection,org.jboss.interceptor.spi.model.InterceptionType,java.lang.Object,java.lang.reflect.Method)\u003e"
+      ],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.ArrayList: void \u003cinit\u003e(java.util.Collection)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.List: java.util.Iterator iterator()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "javax.interceptor.InvocationContext newInvocationContext",
+      "extendFlag": false,
+      "methodSigs": [
+        "\u003corg.jboss.weld.interceptor.proxy.DefaultInvocationContextFactory: javax.interceptor.InvocationContext newInvocationContext(org.jboss.weld.interceptor.spi.context.InterceptionChain,java.lang.Object,java.lang.reflect.Method,java.lang.Object[])\u003e",
+        "\u003corg.jboss.weld.interceptor.proxy.DefaultInvocationContextFactory: javax.interceptor.InvocationContext newInvocationContext(org.jboss.weld.interceptor.spi.context.InterceptionChain,java.lang.Object,java.lang.reflect.Method,java.lang.Object)\u003e",
+        "\u003corg.jboss.interceptor.proxy.DefaultInvocationContextFactory: javax.interceptor.InvocationContext newInvocationContext(org.jboss.interceptor.spi.context.InterceptionChain,java.lang.Object,java.lang.reflect.Method,java.lang.Object)\u003e",
+        "\u003corg.jboss.weld.interceptor.spi.context.InvocationContextFactory: javax.interceptor.InvocationContext newInvocationContext(org.jboss.weld.interceptor.spi.context.InterceptionChain,java.lang.Object,java.lang.reflect.Method,java.lang.Object[])\u003e",
+        "\u003corg.jboss.interceptor.spi.context.InvocationContextFactory: javax.interceptor.InvocationContext newInvocationContext(org.jboss.interceptor.spi.context.InterceptionChain,java.lang.Object,java.lang.reflect.Method,java.lang.Object[])\u003e",
+        "\u003corg.jboss.weld.interceptor.spi.context.InvocationContextFactory: javax.interceptor.InvocationContext newInvocationContext(org.jboss.weld.interceptor.spi.context.InterceptionChain,java.lang.Object,java.lang.reflect.Method,java.lang.Object)\u003e",
+        "\u003corg.jboss.interceptor.spi.context.InvocationContextFactory: javax.interceptor.InvocationContext newInvocationContext(org.jboss.interceptor.spi.context.InterceptionChain,java.lang.Object,java.lang.reflect.Method,java.lang.Object)\u003e",
+        "\u003corg.jboss.interceptor.proxy.DefaultInvocationContextFactory: javax.interceptor.InvocationContext newInvocationContext(org.jboss.interceptor.spi.context.InterceptionChain,java.lang.Object,java.lang.reflect.Method,java.lang.Object[])\u003e"
+      ],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.String: char[] toCharArray()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Collection: boolean add(java.lang.Object)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.Introspector: java.beans.PropertyDescriptor[] getPropertyDescriptors(java.beans.BeanInfo)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1,
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          0
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": 0
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.List: java.lang.Object[] toArray(java.lang.Object[])\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Object: java.lang.Object clone()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Class: java.lang.reflect.Method[] getMethods()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.ArrayList: java.lang.Object get(int)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Collections$SingletonList: java.util.Iterator iterator()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "java.lang.String capitalize(java.lang.String)",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 2,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "1": [
+          1
+        ]
+      },
+      "paramsBeTainted": {
+        "1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "1": [
+          {
+            "isMutable": true,
+            "key": 1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "java.lang.reflect.Method getReadMethod(java.lang.Class,java.beans.PropertyDescriptor)",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 2,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "getMethods",
+      "extendFlag": false,
+      "methodSigs": [
+        "\u003cjava.lang.Class: java.lang.reflect.Method[] getMethods()\u003e",
+        "\u003ccom.sun.org.apache.bcel.internal.classfile.JavaClass: com.sun.org.apache.bcel.internal.classfile.Method[] getMethods()\u003e",
+        "\u003ccom.sun.org.apache.bcel.internal.generic.ClassGen: com.sun.org.apache.bcel.internal.classfile.Method[] getMethods()\u003e",
+        "\u003corg.jboss.weld.introspector.jlr.WeldClassImpl: java.util.Set getMethods()\u003e",
+        "\u003cjavax.swing.BufferStrategyPaintManager: void getMethods()\u003e",
+        "\u003ccom.sun.corba.se.spi.presentation.rmi.IDLNameTranslator: java.lang.reflect.Method[] getMethods()\u003e",
+        "\u003ccom.sun.java.util.jar.pack.Package$Class: java.util.List getMethods()\u003e",
+        "\u003corg.jboss.weld.introspector.ForwardingWeldClass: java.util.Set getMethods()\u003e",
+        "\u003corg.jboss.weld.introspector.ForwardingAnnotatedType: java.util.Set getMethods()\u003e",
+        "\u003ccom.sun.corba.se.impl.presentation.rmi.IDLNameTranslatorImpl: java.lang.reflect.Method[] getMethods()\u003e"
+      ],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "byte[] toByteArray()",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 2,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.PropertyDescriptor: java.lang.Class getPropertyEditorClass()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "1": [
+          1
+        ]
+      },
+      "paramsBeTainted": {
+        "1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "1": [
+          {
+            "isMutable": true,
+            "key": 1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "java.lang.reflect.Method getAccessibleMethod(java.lang.Class,java.lang.reflect.Method)",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 2,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.String: void \u003cinit\u003e(char[])\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Collection: java.util.Iterator iterator()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.reflect.Method: java.lang.Class getDeclaringClass()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Map$Entry: java.lang.Object getKey()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Base64$Decoder: byte[] decode(java.lang.String)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.reflect.Method: java.Glang.String getName()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.io.ByteArrayInputStream: void \u003cinit\u003e(byte[],int,int)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.io.ObjectInputStream$GetField: float get(java.lang.String,float)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.Introspector: java.beans.BeanInfo getBeanInfo(java.lang.Class)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -1
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -1
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003csun.rmi.server.UnicastServerRef: void \u003cinit\u003e(int)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.beans.PropertyDescriptor: java.lang.reflect.Method getWriteMethod()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "0": [
+          0
+        ]
+      },
+      "paramsBeTainted": {
+        "0": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "0": [
+          {
+            "isMutable": true,
+            "key": 0,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.util.Collections: java.util.Collection unmodifiableCollection(java.util.Collection)\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    },
+    {
+      "taintsConditionRecord": {
+        "-1": [
+          -1
+        ]
+      },
+      "paramsBeTainted": {
+        "-1": [
+          -2
+        ]
+      },
+      "taintInfluenceRecord": {
+        "-1": [
+          {
+            "isMutable": true,
+            "key": -1,
+            "value": -2
+          }
+        ]
+      },
+      "indexMax": -2,
+      "methodSig": "\u003cjava.io.ObjectInputStream: java.io.ObjectInputStream$GetField readFields()\u003e",
+      "extendFlag": true,
+      "methodSigs": [],
+      "needInfluenceCheck": false,
+      "checkLevel": 3,
+      "serializableCheckFlag": true,
+      "taintInfluenceFieldsRecord": {}
+    }
+  ]
+}
