@@ -109,19 +109,9 @@ public class FragmentsContainer {
 //        generateInvocationHandlerFragments();
     }
 
-    /**
-     * 重置容器内存储的信息
-     */
     public static void reset(){
-        protocolCheckRule.init();
-        sources = new HashSet<>(protocolCheckRule.getSourceMethods());
+        sources = new HashSet<>();
         searched = new HashSet<>();
-        log.info("Source Methods Number = "+sources.size());
-
-        for (Fragment.FRAGMENT_STATE state: Fragment.FRAGMENT_STATE.values())
-            stateFragmentsMap.put(state, new LinkedHashSet<>());
-        for (Fragment.FRAGMENT_TYPE type: Fragment.FRAGMENT_TYPE.values())
-            typeFragmentsMap.put(type, new LinkedHashSet<>());
 
         basicFragmentsMap = new HashMap<>();
         sortedSinkFragmentsMap = new TreeMap<>();

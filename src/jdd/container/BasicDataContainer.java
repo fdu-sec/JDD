@@ -57,6 +57,17 @@ public class BasicDataContainer {
     public static HashMap<Integer, TransformableNode> conditionTfNodesMap = new HashMap<>();
     public static int heuristicShortChainCutLen = 0;
 
+    public static void reset(){
+        BasicDataContainer.commonMtdMap = new HashMap<>();
+        BasicDataContainer.commonClassMap = new HashMap<>();
+        BasicDataContainer.subClassSearchRecord = new HashMap<>();
+
+        resetState();
+
+        RulesContainer.reset();
+        FragmentsContainer.reset();
+    }
+
     public static void init(){
         commonMtdMap.put("invokeHandler", Scene.v().getMethod("<java.lang.reflect.InvocationHandler: java.lang.Object invoke(java.lang.Object,java.lang.reflect.Method,java.lang.Object[])>"));
         commonClassMap.put("Map", Utils.toSootClass("java.util.Map"));

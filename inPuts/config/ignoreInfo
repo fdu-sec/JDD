@@ -202,3 +202,5 @@ int size()
 # java.lang.Object getKey()
 # java.lang.Object getValue()
 boolean isEmpty()
+org.springframework.http.server.reactive.JettyHeadersAdapter$1
+org.springframework.http.server.reactive.JettyHeadersAdapter$EntryIterator

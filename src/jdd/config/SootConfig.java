@@ -33,7 +33,7 @@ public class SootConfig {
         Scene.v().releaseFastHierarchy();
         Scene.v().releaseSideEffectAnalysis();
         Scene.v().releaseClientAccessibilityOracle();
-        // 清除之前加载的旧的Application Class
+        //remove odd Application Class
         SootConfig.removeAllAppClz();
 
         Options.v().set_src_prec(Options.src_prec_class);
@@ -43,7 +43,7 @@ public class SootConfig {
         Options.v().set_prepend_classpath(true);
         Options.v().set_keep_line_number(true);
         Options.v().set_output_format(Options.output_format_jimple);
-        Options.v().set_output_dir(RegularConfig.outputDir+"/JimpleOutput/framework1");
+//        Options.v().set_output_dir(RegularConfig.outputDir+"/JimpleOutput/framework1");
         Options.v().set_drop_bodies_after_load(false);
         // Options.v().set_no_bodies_for_excluded(true);
         Options.v().setPhaseOption("cg", "all-reachable:true");

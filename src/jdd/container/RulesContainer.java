@@ -18,6 +18,10 @@ import java.io.IOException;
 public class RulesContainer {
     public static RuleDataStructure ruleDataStructure = null; // 在初始化之后默认不为null
 
+    public static void reset(){
+        ruleDataStructure = null;
+    }
+
     public static void init() throws IOException {
         DataSaveLoadUtil.loadRuleDataStructure();
         // 分配Rules[gadget chains检测]

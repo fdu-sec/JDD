@@ -13,6 +13,8 @@ public class RegularConfig {
     public static String withAllJdk;
     public static String configPath;
     public static int accessPath_limit;
+    public static int executionTimeLimit = 60;
+    public static int reRunLimitNum = 1;
     // 协议选取
     public static String protocol;
     public static String linkMode;

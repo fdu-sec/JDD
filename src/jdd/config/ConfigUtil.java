@@ -341,6 +341,8 @@ public class ConfigUtil {
             RegularConfig.taintRuleMode = configProperties.getProperty(ConfigurationEnum.TAINT_RULE_MODE.toString(), "strict");
             RegularConfig.sinkRules = (HashSet<String>) Utils.toSet(configProperties.getProperty(ConfigurationEnum.SINK_RULES.toString()));
             BasicDataContainer.openDynamicProxyDetect = configProperties.getProperty(ConfigurationEnum.OPEN_DYNAMIC_PROXY.toString(), "false").equals("true");
+            RegularConfig.executionTimeLimit = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.EXECUTION_TIME_LIMIT.toString(), "60"));
+            RegularConfig.reRunLimitNum = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.RE_RUN_LIMIT_NUM.toString(), "1"));
             BasicDataContainer.heuristicShortChainCutLen = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.Heuristic_Short_Chain_Cut_Len.toString(), "0"));
             BasicDataContainer.serializableInterceptLen = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.SERIALIZABLE_INTERCEPTLEN.toString(), "2"));
 
