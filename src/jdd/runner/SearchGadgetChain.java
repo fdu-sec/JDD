@@ -76,9 +76,9 @@ class DetectorRuntimeExceptionHandler implements Thread.UncaughtExceptionHandler
     }
 
     /**
-     * 处理异常信息，得到造成异常的类名
-     * @param msg 异常信息
-     * @return 造成异常的类
+     * Handle the exception message and get the name of the class that caused the exception
+     * @param msg exception message
+     * @return unhandled class
      */
     private static String handleExceptionMsg(String msg) {
 
@@ -112,8 +112,8 @@ class DetectorRuntimeExceptionHandler implements Thread.UncaughtExceptionHandler
     }
 
     /**
-     * 将无法解析的类从目标分析的.class文件夹中删除
-     * 为适配 jdk > 8 , 只增加到ignoreInfo文件中，对于jdk>8的可能无效
+     * Remove unparsable classes from the .class folder of the target analysis
+     * only add the unhandled class to ignoreInfo file, may not work for jdk > 8.
      * @param res
      */
     public static void deleteUnhandledClass(String res){
@@ -128,10 +128,7 @@ class DetectorRuntimeExceptionHandler implements Thread.UncaughtExceptionHandler
     }
 
     /**
-     * 得到造成异常的类名
-     * @param p 使用的正则模式
-     * @param msg 异常信息
-     * @return
+     * Get the name of the class that caused the exception
      */
     private static String getExceptionClassName(String p, String msg){
 
@@ -152,10 +149,7 @@ class DetectorRuntimeExceptionHandler implements Thread.UncaughtExceptionHandler
     }
 
     /**
-     * 给定匹配的pattern和需要处理的str，返回匹配到的结果列表
-     * @param pattern 使用的正则模式
-     * @param str 被处理的字符串
-     * @return 如果没有匹配到任何结果，返回的为一个空的List
+     * Given a pattern to match and a str to process, return a list of results that match.
      */
     public static List<String> getRegexResultList(String pattern, String str){
 

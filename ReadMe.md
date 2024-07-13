@@ -1,4 +1,4 @@
-## JDD: Efficient Detection of Java Deserialization Gadget Chains via Bottom-up Gadget Search and Dataflow-aided Payload Construction
+## Efficient Detection of Java Deserialization Gadget Chains via Bottom-up Gadget Search and Dataflow-aided Payload Construction
 ### Publication
 Efficient Detection of Java Deserialization Gadget Chains via Bottom-up Gadget Search and Dataflow-aided Payload Construction
 
@@ -12,9 +12,9 @@ JDK 8
 Dependencies: See `pom.xml` for specific dependencies
 
 ### How to use
-`git clone https://github.com/BofeiC/JDD.git`
+1. `git clone https://github.com/BofeiC/JDD.git`
 
-run `runner/SearchGadgetChains.main`
+2. run `runner/SearchGadgetChains.main`
 
 ## Document
 
