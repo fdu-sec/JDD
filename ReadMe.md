@@ -11,6 +11,9 @@ JDK 8
 
 Dependencies: See `pom.xml` for specific dependencies
 
+
+(It is most stable with JDK 8. If you need to change the Java version, you need to change the implementation of the `ConfigUtil.getJdkDependencies` method at the same time.)
+
 ### How to use
 1. `git clone https://github.com/BofeiC/JDD.git`
 
@@ -71,14 +74,6 @@ In the email, please include a justification letter (PDF format) on official let
 The justification letter needs to acknowledge the “JDD” project from Fudan University and clearly state the reason for requesting the dataset. 
 Also, confirm that the dataset will not be shared with others without our permission. We emphasize that we will ignore emails that do not follow the above instructions.
 
-### CVEs Assigned
-- CVE-2023-29234
-- CVE-2023-35839
-- CVE-2023-39131
-- CVE-2023-48967
-- CVE-2024-23636
-- CVE-2023-41331
-- ...
 
 
 ### A proof-of-concept tool
