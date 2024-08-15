@@ -11,9 +11,6 @@ JDK 8
 
 Dependencies: See `pom.xml` for specific dependencies
 
-
-(It is most stable with JDK 8. If you need to change the Java version, you need to change the implementation of the `ConfigUtil.getJdkDependencies` method at the same time.)
-
 ### How to use
 1. `git clone https://github.com/BofeiC/JDD.git`
 
@@ -34,7 +31,7 @@ Dependencies: See `pom.xml` for specific dependencies
     - json: needSerializable = false or true
 
 - sinkRules:
-  - available options: classLoad,invoke,jndi,exec,secondDes,custom,file
+  - available options: classLoad,invoke,jndi,exec,secondDes,custom,file (e.g., `sinkRules = invoke,jndi`)
     - A version that facilitates custom additions and modifications may come online later
     - Some sinks (in custom) that have not been added/tested after refactoring
 

@@ -23,12 +23,12 @@ import java.util.regex.Pattern;
 
 @Slf4j
 public class SearchGadgetChain implements Callable<String> {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        String message = "Execute";
+    public static void main(String[] args) throws InterruptedException {
+        String state = "Execute";
         int times = 0;
 
         TimeMeasurement.begin();
-        while(message.equals("Execute")){
+        while(!state.equals("Finished")){
             Thread.sleep(1000);
             log.info("Execute the program for the " + (++times) + "th iteration");
             SearchGadgetChain detector = new SearchGadgetChain();
@@ -38,19 +38,13 @@ public class SearchGadgetChain implements Callable<String> {
             detectorThread.start();
             detectorThread.join();
             try{
-                message = task.get();
+                state = task.get();
             } catch (Exception e){
-                log.error("Multi-thread error: " + e.getMessage());
+                log.error("Error Report: " + e.getMessage());
                 if(times > RegularConfig.executionTimeLimit){ break; }
+            }finally {
+                BasicDataContainer.reset();
             }
-            SootConfig.loadClassCounter = 0;
-            BasicDataContainer.reset();
-        }
-        String usedTime = TimeMeasurement.currentTime();
-        try{
-            FileUtils.write(new File("time-measurement"), usedTime, StandardCharsets.UTF_8, false);
-        }catch (IOException e){
-            e.printStackTrace();
         }
     }
 

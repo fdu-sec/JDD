@@ -64,23 +64,7 @@ public class SearchGadgetChains {
         // 生成IOCD信息
         System.out.println("[ IOCD Generating ]");
         buildIOCD();
-
-        // 分析结束提示
-//        analysisFinalSignal();
     }
-
-    public static void analysisFinalSignal() throws IOException {
-        String filePath = "/home/cbf/dvd-evaluation/evaluation" + File.separator + "detect-fin";
-        try {
-            FileWriter out = new FileWriter(filePath, false);
-            out.write("detect-fin");
-            out.flush();
-        } catch (IOException e) {
-            log.error("Could not write result to " + filePath + "!");
-            e.printStackTrace();
-        }
-    }
-
 
     public static void searchGadgetFragments() {
         setDetectSchemeOn(); // 设置开始检测的 flag
@@ -113,14 +97,14 @@ public class SearchGadgetChains {
             new TimeOutTask() {
                 @Override
                 protected void task() throws IOException {
-                    log.info("搜索方法中相关的fields" + sootMethod.getSignature());
+                    log.info("Search for related fields in the method" + sootMethod.getSignature());
                     dataflowDetect.collectFields(sootMethod, usedFields, callStack);
                 }
 
                 @Override
                 protected void timeoutHandler() {
-                    log.error("分析方法" + sootMethod.getName() + "时超时"
-                            + "位于类" + sootMethod.getDeclaringClass() + "位于类" + sootMethod.getDeclaringClass());
+                    log.error("Timeout when analyzing method" + sootMethod.getName() + ". Located in class"
+                            + sootMethod.getDeclaringClass());
                 }
             }.run(180);
         } catch (Exception e) {
@@ -228,14 +212,14 @@ public class SearchGadgetChains {
             new TimeOutTask() {
                 @Override
                 protected void task() throws IOException {
-                    log.info("搜索方法中相关的fields" + sootMethod.getSignature());
+                    log.info("Search for related fields in the method: " + sootMethod.getSignature());
                     dataflowDetect.constructFieldsTaintGraph(sootMethod, callStack, undeterminedFieldNodes);
                 }
 
                 @Override
                 protected void timeoutHandler() {
-                    log.error("分析方法" + sootMethod.getName() + "时超时"
-                            + "位于类" + sootMethod.getDeclaringClass() + "位于类" + sootMethod.getDeclaringClass());
+                    log.error("Timeout when analyzing method" + sootMethod.getName() + ". Located in class"
+                            + sootMethod.getDeclaringClass());
                 }
             }.run(180);
         } catch (Exception e) {
@@ -269,14 +253,14 @@ public class SearchGadgetChains {
             new TimeOutTask() {
                 @Override
                 protected void task() throws IOException {
-                    log.info("处理方法" + headMtd.getSignature());
+                    log.info("[Identifying Fragment] searching from: " + headMtd.getSignature());
                     dataflowDetect.detectFragment(descriptor, callStack);
                 }
 
                 @Override
                 protected void timeoutHandler() {
-                    log.error("分析方法" + headMtd.getName() + "时超时"
-                            + "位于类" + headMtd.getDeclaringClass() + "位于类" + headMtd.getDeclaringClass());
+                    log.error("Timeout when analyzing method" + headMtd.getName() + ". Located in class"
+                            + (thisClass==null? headMtd.getDeclaringClass(): thisClass));
                 }
             }.run(timeThread);
         } catch (Exception e) {
@@ -372,7 +356,7 @@ public class SearchGadgetChains {
         }
 
         FragmentsContainer.sortSinkFragments();
-        log.info("Gadget chains总数 = " + FragmentsContainer.gadgetFragments.size());
+        log.info("Total number of Gadget chains = " + FragmentsContainer.gadgetFragments.size());
     }
 
     /**
@@ -394,10 +378,10 @@ public class SearchGadgetChains {
                 if (!RuleUtils.heuristicFilterGF(sinkFragment, detectedCount))
                     continue;
                 detectedCount++;
+                log.info("[Generating IOCD]");
                 DataSaveLoadUtil.recordCallStackToFile(sinkFragment.gadgets, sinkFragment.sinkType,
                         RegularConfig.outputDir + "/gadgets/interInfos/" + sinkFragment.sinkType.toString() + "SinkFragments.txt",
                         true);
-
                 GadgetInfoRecord gadgetInfoRecord = FragmentsContainer.generateInitGadgetInfoRecord(sinkFragment);
 
                 if (gadgetInfoRecord != null) {
@@ -415,7 +399,7 @@ public class SearchGadgetChains {
             }
         }
 
-        log.info("IOCD验证后, Gadget chains总数 = " + count);
+        log.info("Number of gadget chains successfully generated for IOCD = " + count);
 
         // 最后输出插桩信息
         exportInstrumentsRecordJson(instruments, RegularConfig.outputDir + File.separator + "gadgets" + File.separator + RegularConfig.outPutDirName + File.separator);
@@ -432,14 +416,13 @@ public class SearchGadgetChains {
             new TimeOutTask() {
                 @Override
                 protected void task() throws IOException {
-                    log.info("处理方法" + sourceGadget.getSignature());
                     dataflowDetect.inferGadgetInfosOfWholeLife(sourceGadget, gadgetInfoRecord, callStack);
                 }
 
                 @Override
                 protected void timeoutHandler() {
-                    log.error("分析方法" + sourceGadget.getName() + "时超时"
-                            + "位于类" + sourceGadget.getDeclaringClass() + "位于类" + sourceGadget.getDeclaringClass());
+                    log.error("Timeout when analyzing method" + sourceGadget.getName() + ". Located in class"
+                            + sourceGadget.getDeclaringClass());
                 }
             }.run(60 * 2);
         } catch (Throwable e) {
