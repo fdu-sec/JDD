@@ -59,6 +59,10 @@ We've recently refactored JDD, resulting in improved performance in some applica
 
 ### Datasets (A New Benchmark)
 - If you need the dataset, please send us an email (bfchen22@m.fudan.edu.cn) with the purpose. Thanks for understanding.
+- You can find the `IOCD` datasets in the `IOCDDatasets` directory.
+  The IOCD dataset is an important intermediate component that contains:
+  - Gadget chains detected prior to dynamic verification, and 
+  - Key constraint information that guide the generation of Injection Objects.
 
 In the email, please include a justification letter (PDF format) on official letterhead. 
 The justification letter needs to acknowledge the “JDD” project from Fudan University and clearly state the reason for requesting the dataset. 
