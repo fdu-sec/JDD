@@ -135,19 +135,12 @@ public class CustomCheckRule extends AbstractCheckRule{
         String methodSig = sootMethod.getSignature();
 
         if (customRulesMap.get(cumMark).contains(methodSig)){
-            ValueBox thisValueBox = Parameter.getThisValueBox(tfNode.node);
-            if (thisValueBox == null)
-                return false;
-
             Value arg0 = invokeExpr.getArg(0);
-            risky = Utils.isTainted(thisValueBox.getValue(), descriptor.taints)
-                    && Utils.isTainted(arg0, descriptor.taints);
+            risky = Utils.isTainted(arg0, descriptor.taints);
 
             if (risky){
                 HashSet<Value> taintedArgs = new HashSet<>();
-                taintedArgs.add(thisValueBox.getValue());
                 taintedArgs.add(arg0);
-//                sinkType = SinkType.CUSTOM_Clojure;
                 risky = RecordUtils.recordTaintedArgs(descriptor, taintedArgs, sinkType, tfNode);
             }
         }
@@ -273,7 +266,6 @@ public class CustomCheckRule extends AbstractCheckRule{
 
             case "checkClojure":
                controllableParams.add(0);
-               controllableParams.add(-1);
                break;
 
             case "fastjson":

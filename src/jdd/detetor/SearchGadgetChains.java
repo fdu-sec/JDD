@@ -62,20 +62,17 @@ public class SearchGadgetChains {
         linkFragments();
 
         // 生成IOCD信息
-        if (RegularConfig.outPutIOCD) {
-            System.out.println("[ IOCD Generating ]");
-            buildIOCD();
-        }else {
-            System.out.println("[ Print Detected Gadget Chains ]");
-            // just print the detected chains, see the detected chains in DetectedGadgetChains.txt
-            String targetResultsPath = RegularConfig.outputDir + File.separator + "gadgets" + File.separator + RegularConfig.outPutDirName + File.separator;
-            DataSaveLoadUtil.createDir(targetResultsPath);
-            for (HashSet<Fragment> sinkFragments : FragmentsContainer.sortedSinkFragmentsMap.values()) {
-                for (Fragment sinkFragment : sinkFragments) {
-                    DataSaveLoadUtil.recordCallStackToFile(sinkFragment.gadgets, sinkFragment.sinkType,
-                            targetResultsPath+ "DetectedGadgetChains.txt",
-                            true);
-                }
+        System.out.println("[ IOCD Generating ]");
+        buildIOCD();
+        System.out.println("[ Print Detected Gadget Chains ]");
+        // just print the detected chains, see the detected chains in DetectedGadgetChains.txt
+        String targetResultsPath = RegularConfig.outputDir + File.separator + "gadgets" + File.separator + RegularConfig.outPutDirName + File.separator;
+        DataSaveLoadUtil.createDir(targetResultsPath);
+        for (HashSet<Fragment> sinkFragments : FragmentsContainer.sortedSinkFragmentsMap.values()) {
+            for (Fragment sinkFragment : sinkFragments) {
+                DataSaveLoadUtil.recordCallStackToFile(sinkFragment.gadgets, sinkFragment.sinkType,
+                        targetResultsPath+ "DetectedGadgetChains.txt",
+                        true);
             }
         }
     }
