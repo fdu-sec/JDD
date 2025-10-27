@@ -1,0 +1,11 @@
+[INVOKE Gadget] <org.jboss.weld.interceptor.proxy.InterceptorMethodHandler: void readObject(java.io.ObjectInputStream)>
+ -> <org.jboss.weld.interceptor.proxy.InterceptorMethodHandler: java.lang.Object executeInterception(java.lang.Object,java.lang.reflect.Method,java.lang.reflect.Method,java.lang.Object[],org.jboss.weld.interceptor.spi.model.InterceptionType)>
+ -> <org.jboss.weld.interceptor.proxy.SimpleInterceptionChain: java.lang.Object invokeNextInterceptor(javax.interceptor.InvocationContext)>
+ -> <java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>
+
+[INVOKE Gadget] <org.jboss.weld.interceptor.proxy.InterceptorMethodHandler: void readObject(java.io.ObjectInputStream)>
+ -> <org.jboss.weld.interceptor.proxy.InterceptorMethodHandler: java.lang.Object executeInterception(java.lang.Object,java.lang.reflect.Method,java.lang.reflect.Method,java.lang.Object[],org.jboss.weld.interceptor.spi.model.InterceptionType)>
+ -> <org.jboss.weld.interceptor.proxy.SimpleInterceptionChain: java.lang.Object invokeNextInterceptor(javax.interceptor.InvocationContext)>
+ -> <org.jboss.weld.interceptor.proxy.SimpleMethodInvocation: java.lang.Object invoke(javax.interceptor.InvocationContext)>
+ -> <java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>
+

@@ -1,0 +1,3 @@
+[FILE Gadget] <org.apache.commons.fileupload.disk.DiskFileItem: void readObject(java.io.ObjectInputStream)>
+ -> <java.io.OutputStream: void write(byte[])>
+
