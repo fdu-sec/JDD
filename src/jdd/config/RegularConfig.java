@@ -32,4 +32,5 @@ public class RegularConfig {
     public static String derivationType;
     public static HashSet<String> sinkRules = new HashSet<>();
     public static HashSet<String> jsonSourceTypes;
+    public static boolean iocdRecheck;
 }

@@ -20,6 +20,7 @@ public enum ConfigurationEnum {
     SERIALIZABLE_INTERCEPTLEN("serializableInterceptLen"),
     DERIVATION_TYPE("derivationType"),
     SINK_RULES("sinkRules"),
+    IOCD_RECHECK("IOCDRecheck"),
     ENTRY_METHODS("entryMethods"),
     PRIORITIZED_GADGET_CHAIN_LIMIT("prioritizedGadgetChainLimit"),
     OUTPUT_IOCD("outPutIOCD"),

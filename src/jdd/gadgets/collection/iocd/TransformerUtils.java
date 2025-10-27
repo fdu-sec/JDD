@@ -259,6 +259,14 @@ public class TransformerUtils {
         }
         iocd.sinkRecords = tmpSinkRecords;
 
+        if (gadgetInfoRecord.sinkType.equals(SinkType.CUSTOM)){
+            for (String cusType: CustomCheckRule.customRulesMap.keySet()) {
+                if (CustomCheckRule.customRulesMap.get(cusType).contains(iocd.gadgetCallStack.getLast().getValue())){
+                    iocd.sinkType = cusType;
+                }
+            }
+        }
+
         return iocd;
     }
 

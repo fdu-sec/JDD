@@ -63,6 +63,7 @@ We've recently refactored JDD, resulting in improved performance in some applica
   The IOCD dataset is an important intermediate component that contains:
   - Gadget chains detected prior to dynamic verification, and 
   - Key constraint information that guide the generation of Injection Objects.
+  - *The number of IOCDs is usually smaller than the number of gadget chains shown in DetectedGadgetChains.txt. This is because JDD performs a more precise taint analysis during the IOCD generation process, which eliminates some false positives.*
 
 In the email, please include a justification letter (PDF format) on official letterhead. 
 The justification letter needs to acknowledge the “JDD” project from Fudan University and clearly state the reason for requesting the dataset. 

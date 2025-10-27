@@ -45,9 +45,9 @@ public class CustomCheckRule extends AbstractCheckRule{
         customRulesMap.put("Myface", new HashSet<>());
         customRulesMap.get("Myface").add("<javax.el.ValueExpression: java.lang.Object getValue(javax.el.ELContext)>");
 
-        // checkClojure
-        customRulesMap.put("checkClojure", new HashSet<>());
-        customRulesMap.get("checkClojure").add("<clojure.main$eval_opt: java.lang.Object invokeStatic(java.lang.Object)>");
+        // CLOJURE
+        customRulesMap.put("CLOJURE", new HashSet<>());
+        customRulesMap.get("CLOJURE").add("<clojure.main$eval_opt: java.lang.Object invokeStatic(java.lang.Object)>");
 
         // fastjson
         customRulesMap.put("fastjson", new HashSet<>());
@@ -86,7 +86,7 @@ public class CustomCheckRule extends AbstractCheckRule{
                         risky = true;
                         break;
                     }
-                case "checkClojure":
+                case "CLOJURE":
                     if (checkRiskyForClojure(cumMark, descriptor, tfNode)){
                         risky = true;
                         break;
@@ -264,7 +264,7 @@ public class CustomCheckRule extends AbstractCheckRule{
                 controllableParams.add(-1);
                 break;
 
-            case "checkClojure":
+            case "CLOJURE":
                controllableParams.add(0);
                break;
 

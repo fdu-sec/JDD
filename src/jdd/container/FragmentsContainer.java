@@ -569,7 +569,7 @@ public class FragmentsContainer {
                 return null;
             if (!linkedFragments.contains(lastFragment)) linkedFragments.add(lastFragment);
         }
-        if (!detectAndRecordHashCollision(gadgetInfoRecord, linkedFragments)){
+        if (RegularConfig.iocdRecheck && !detectAndRecordHashCollision(gadgetInfoRecord, linkedFragments)){
             return null;
         }
 

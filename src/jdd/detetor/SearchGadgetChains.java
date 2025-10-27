@@ -444,7 +444,7 @@ public class SearchGadgetChains {
     }
 
     public static void constructIOCDAndSave(GadgetInfoRecord gadgetInfoRecord, Instruments instruments) throws Exception {
-        if (!gadgetInfoRecord.flag)
+        if (!gadgetInfoRecord.flag && RegularConfig.iocdRecheck)
             return;
         if (gadgetInfoRecord.hashCollisionReview == 1) {
             if (!RuleUtils.recordCollisionForSingleHC(gadgetInfoRecord.linkedFragments,
@@ -463,7 +463,7 @@ public class SearchGadgetChains {
                     rootFieldsRecord.add(classNode.source.field.getFirst());
                 else {
                     gadgetInfoRecord.flag = false;
-                    return;
+                    if (RegularConfig.iocdRecheck)  return;
                 }
             }
         }

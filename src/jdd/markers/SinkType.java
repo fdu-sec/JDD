@@ -9,7 +9,7 @@ public enum SinkType {
     SECOND_DES,
     CUSTOM_MyFace,
     CUSTOM_Bsh,
-    CUSTOM_Clojure,
+    CLOJURE,
     CUSTOM_Groovy,
     CUSTOM
 }
