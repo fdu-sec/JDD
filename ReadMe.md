@@ -57,6 +57,10 @@ We've recently refactored JDD, resulting in improved performance in some applica
 - Dynamic proxies (need to switch to dpx branch)
 - Reflection
 
+### JDD-Fuzzer (Dynamic verification)
+
+https://github.com/CFionaBF/JDD-Fuzzer
+
 ### Datasets (A New Benchmark)
 - If you need the dataset, please send us an email (bfchen22@m.fudan.edu.cn) with the purpose. Thanks for understanding.
 - You can find the `IOCD` datasets in the `IOCDDatasets` directory.
