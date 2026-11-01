@@ -104,7 +104,7 @@ public class DataflowDetect {
         for (TransformableNode tfNode: topologicalOrder){
             if (!DataFlowAnalysisUtils.checkTransformable(tfNode,descriptor,callStack)) continue;
 
-            if (callStack.size() <= BasicDataContainer.stackLenLimitNum){
+            if (callStack.size() <= container.BasicDataContainer.stackLenLimitFor(callStack)){
                 DataFlowAnalysisUtils.recordEqualsFieldInEqualsMtd(tfNode, descriptor);
 
                 // 进行污点检查, 判断是否有需要继续跟进invoked method进行污点分析
@@ -116,7 +116,8 @@ public class DataflowDetect {
 
                 for (SootMethod invokedMethod: invokedMethods) {
                     if (BasicDataContainer.blackList.contains(invokedMethod.getSignature())
-                            || DataFlowAnalysisUtils.isDupInvokedMethodInFragment(invokedMethod, callStack))
+                            || (!container.SuperCallSites.isSuperCallTarget(tfNode, invokedMethod)
+                                && DataFlowAnalysisUtils.isDupInvokedMethodInFragment(invokedMethod, callStack)))
                         continue;
 
                     MethodDescriptor calleeDescriptor = DataFlowAnalysisUtils.flowInvokedMethod(descriptor, invokedMethod, inputCallFrame, callStack, tfNode);
@@ -254,6 +255,7 @@ public class DataflowDetect {
 
                 HashMap<Integer, Pointer> inputCallFrame = DataFlowAnalysisUtils.getMethodBaseParamInfo(tfNode, descriptor);
                 HashSet<SootMethod> invokedMethods = DataFlowAnalysisUtils.getInvokedMethods(tfNode, inputCallFrame, callStack, gadgetInfoRecord);
+                invokedMethods = iocdCallTargets(tfNode, invokedMethods);
                 tmpInImplicitClassFlag = gadgetInfoRecord.inImplicitClassFlag;
 
                 for (SootMethod invokedMethod: invokedMethods) {
@@ -266,7 +268,14 @@ public class DataflowDetect {
 
                     ClassNode conClassNode = null;
                     if (!FragmentsContainer.isSinkMethod(invokedMethod)){
-                        if (Utils.isSubList(callStack,gadgetInfoRecord.gadgets)){
+                        if (isUnwrapCall(tfNode, invokedMethod)){
+                            // MozillaRhino1: off-chain call followed like a call on the chain, see isUnwrapCall
+                            ClassNode receiverNode = gadgetInfoRecord.createReceiverClassNode(tfNode, calleeDescriptor, descriptor,
+                                    BasicDataContainer.rhinoNjoUnwrap == null ? null
+                                            : BasicDataContainer.rhinoNjoUnwrap.getDeclaringClass());
+                            if (receiverNode != null) receiverNode.createAndAddGadgetNode(calleeDescriptor);
+                        }
+                        else if (Utils.isSubList(callStack,gadgetInfoRecord.gadgets)){
                             inferInfosOnGadgetChain(gadgetInfoRecord, callStack, tfNode, calleeDescriptor, descriptor);
                         }
                         else if (tmpInImplicitClassFlag){
@@ -354,6 +363,7 @@ public class DataflowDetect {
 
                 HashMap<Integer, Pointer> inputCallFrame = DataFlowAnalysisUtils.getMethodBaseParamInfo(tfNode, descriptor);
                 HashSet<SootMethod> invokedMethods = DataFlowAnalysisUtils.getInvokedMethods(tfNode, inputCallFrame, callStack, gadgetInfoRecord);
+                invokedMethods = iocdCallTargets(tfNode, invokedMethods);
 
                 ClassNode conClassNode = null;
 
@@ -390,5 +400,39 @@ public class DataflowDetect {
                     descriptor, tfNode, false);
         }
         DataFlowAnalysisUtils.updateAfterAnalysisMtd(descriptor);
+    }
+
+    /**
+     * Candidate methods of a call site while the IOCD is generated, with two corrections for the Rhino chains; every
+     * other call site keeps the targets it was given.
+     * <p>
+     * NativeJavaObject.get looks a name up with  fieldAndMethods.get(name) , a java.util.Map.get on a transient field
+     * that is null after deserialization, so the call is not entered at run time. Entered here, JDD picks one of the
+     * Map implementations and records the following  result == null  with that class's field as its variable; the class
+     * is not part of the chain, so the fuzzer cannot find the object and gives up every condition of the IOCD. No
+     * target is returned for it.
+     * <p>
+     * NativeJavaMethod.call reaches its sink target through  ((Wrapper) o).unwrap() , a call off the gadget chain.
+     * JDD only transfers field sources through calls on the chain, so the target would have no source and no sink
+     * record would be written. For that one call site the callee is pinned to NativeJavaObject.unwrap().
+     */
+    private static HashSet<SootMethod> iocdCallTargets(TransformableNode tfNode, HashSet<SootMethod> targets) {
+        if (tfNode == null || !tfNode.containsInvoke()) return targets;
+        if (BasicDataContainer.rhinoNjoGet != null && !targets.isEmpty() && tfNode.method == BasicDataContainer.rhinoNjoGet
+                && BasicDataContainer.rhinoMapGet.equals(tfNode.getUnitInvokeExpr().getMethod()))
+            return new HashSet<>();
+        if (BasicDataContainer.rhinoNjoUnwrap != null && tfNode.method == BasicDataContainer.rhinoNjmCall
+                && BasicDataContainer.rhinoWrapperUnwrap.equals(tfNode.getUnitInvokeExpr().getMethod())) {
+            HashSet<SootMethod> only = new HashSet<>();
+            only.add(BasicDataContainer.rhinoNjoUnwrap);
+            return only;
+        }
+        return targets;
+    }
+
+    /** The call of Wrapper.unwrap() in NativeJavaMethod.call, with the callee pinned by iocdCallTargets. */
+    private static boolean isUnwrapCall(TransformableNode tfNode, SootMethod invokedMethod) {
+        return BasicDataContainer.rhinoNjoUnwrap != null && invokedMethod == BasicDataContainer.rhinoNjoUnwrap
+                && tfNode != null && tfNode.method == BasicDataContainer.rhinoNjmCall;
     }
 }

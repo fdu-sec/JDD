@@ -61,6 +61,14 @@ We've recently refactored JDD, resulting in improved performance in some applica
 
 https://github.com/CFionaBF/JDD-Fuzzer
 
+### Additions to the static analysis in this branch
+
+- `inPuts/config/reflectionEdges`: supplementary call edges for reflective calls Soot does not resolve.
+- `inPuts/config/superCalls`: `super.m()` call sites followed with their static target.
+- `config.properties`: `methodAnalysisTimeout` / `headAnalysisTimeout`, the per-method analysis budgets (seconds);
+  the analyses they cut are listed in `<outputDir>/analysisTimeouts.txt`.
+- `pom.xml`: builds a runnable `target/JDD-1.0-SNAPSHOT-jar-with-dependencies.jar` (`mvn package -DskipTests`).
+
 ### Datasets (A New Benchmark)
 - If you need the dataset, please send us an email (bfchen22@m.fudan.edu.cn) with the purpose. Thanks for understanding.
 - You can find the `IOCD` datasets in the `IOCDDatasets` directory.

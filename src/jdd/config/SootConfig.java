@@ -3,6 +3,7 @@ package config;
 import cg.CG;
 import container.BasicDataContainer;
 import container.FragmentsContainer;
+import container.ReflectionEdges;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import soot.*;
@@ -55,6 +56,9 @@ public class SootConfig {
 
     public static void constructCG(){
         List<SootMethod> tmpMethods = new ArrayList<>(FragmentsContainer.sources);
+        // reflective edge targets are reached only through the supplementary edges: make Soot build edges for their bodies
+        for (SootMethod edgeTarget : ReflectionEdges.allTargets())
+            if (!tmpMethods.contains(edgeTarget)) tmpMethods.add(edgeTarget);
         BasicDataContainer.cg = new CG(tmpMethods);
     }
 

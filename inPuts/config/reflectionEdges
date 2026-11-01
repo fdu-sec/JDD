@@ -1,0 +1,8 @@
+# Supplementary call edges for reflective calls that Soot's call graph cannot see (see container/ReflectionEdges.java).
+# One edge per line:   <static java.lang.reflect.Method field> -> <target method>
+# An edge applies to  field.invoke(obj, args)  call sites whose receiver is read from that static field. Lines whose
+# field or method is not in the analysed program are ignored, so listing an edge never affects other applications.
+#
+# Rhino (MozillaRhino2): NativeJavaObject.readObject calls JavaAdapter.readAdapterObject reflectively
+# (static initializer: adapter_readAdapterObject = Kit.classOrNull("org.mozilla.javascript.JavaAdapter").getMethod("readAdapterObject", ...)).
+<org.mozilla.javascript.NativeJavaObject: java.lang.reflect.Method adapter_readAdapterObject> -> <org.mozilla.javascript.JavaAdapter: java.lang.Object readAdapterObject(org.mozilla.javascript.Scriptable,java.io.ObjectInputStream)>

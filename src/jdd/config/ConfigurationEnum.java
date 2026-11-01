@@ -30,6 +30,8 @@ public enum ConfigurationEnum {
     INPUT_EXP_PATH("inputEXPInfosPath"),
     CHAIN_LIMIT("chainLimit"),
     FRAGMENT_LEN_LIMIT("fragmentLenLimit"),
+    METHOD_ANALYSIS_TIMEOUT("methodAnalysisTimeout"),
+    HEAD_ANALYSIS_TIMEOUT("headAnalysisTimeout"),
 
     NEED_SERIALIZABLE("needSerializable");
 

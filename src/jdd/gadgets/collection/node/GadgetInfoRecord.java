@@ -29,9 +29,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 import static dataflow.DataFlowAnalysisUtils.extractUsedFields;
 import static gadgets.collection.AnalyzeUtils.getHashCodeMtd;
+import static gadgets.collection.AnalyzeUtils.getPreMethod;
 
 public class GadgetInfoRecord {
     public final Fragment fragment;
@@ -113,6 +115,10 @@ public class GadgetInfoRecord {
         SootMethod sootMethod = descriptor.sootMethod;
         // 静态方法不更新
         if (sootMethod.isStatic() | descriptor.tempGeneratedObjs.contains(descriptor.paramIdMapLocalValue.get(-1)))
+            return;
+        // entered by a super/private call of a listed method (SuperCallSites): still the same object, keep the current class
+        if (container.SuperCallSites.isSameObjectEdge(getPreMethod(callStack, sootMethod), sootMethod)
+                || isSameObjectHop(getPreMethod(callStack, sootMethod), sootMethod))
             return;
 
         if (Utils.isSubList(callStack, gadgets)) {
@@ -357,6 +363,9 @@ public class GadgetInfoRecord {
                                         MethodDescriptor descriptor,
                                         LinkedList<SootMethod> callStack) {
         if (!tfNode.containsInvoke()) return null;
+        // super.m(...) / private call of a listed method (SuperCallSites): the same object, it stays in the current class node
+        if (container.SuperCallSites.isSuperCall(tfNode)) return null;
+        if (isSameObjectHop(descriptor.sootMethod, invokedDescriptor.sootMethod)) return null;
 
         HashSet<SourceNode> fieldSources = new HashSet<>();
         ValueBox thisValueBox = Parameter.getThisValueBox(tfNode.node);
@@ -385,6 +394,7 @@ public class GadgetInfoRecord {
         if (fieldSources.isEmpty()) fieldSources = RuleUtils.getTaintedFieldSourceNodesViaHeuristic(
                     thisValueBox, invokeExpr, fieldTypeOfClass, tfNode, callStack, descriptor, curClassNode,this
             );
+        fieldSources = remapSources(fieldSources, curClass);
         for (SourceNode tmpFieldSourceNode : fieldSources) {
             SootClass tmpSourceFieldTypeOfClass = Utils.toSootClass(tmpFieldSourceNode.getType());
             if (tmpSourceFieldTypeOfClass == null)
@@ -502,6 +512,36 @@ public class GadgetInfoRecord {
     }
 
     /**
+     * MozillaRhino1: class node for the receiver of an off-chain call whose callee is followed like a
+     * call on the chain. The node is created under the class node that holds the receiver's source field (not under the
+     * current class), with that field as its source. Returns null if there is no usable source.
+     */
+    public ClassNode createReceiverClassNode(TransformableNode tfNode, MethodDescriptor invokedDescriptor,
+                                             MethodDescriptor descriptor, SootClass receiverClass) {
+        ValueBox thisValueBox = Parameter.getThisValueBox(tfNode.node);
+        if (thisValueBox == null || receiverClass == null) return null;
+        if (classFieldsGraph.containsKey(receiverClass)) return classFieldsGraph.get(receiverClass);
+        SourceNode chosen = null;
+        for (SourceNode source : RuleUtils.getTaintedFieldSourcesViaAF(thisValueBox.getValue(), this, descriptor)) {
+            SootClass fieldClass = Utils.toSootClass(source.getType());
+            if (fieldClass != null && (fieldClass.equals(receiverClass) || ClassUtils.getAllSupers(receiverClass).contains(fieldClass))
+                    && getClassNode(source.classOfField) != null) {
+                // a field of type Object matches everything: only if there is no field with a more specific type
+                if (chosen == null || (chosen.getType().toString().equals("java.lang.Object") && !fieldClass.getName().equals("java.lang.Object")))
+                    chosen = source;
+            }
+        }
+        if (chosen == null) return null;
+        ClassNode parent = getClassNode(chosen.classOfField);
+        ClassNode node = new ClassNode(parent, invokedDescriptor.sootMethod, receiverClass, chosen, this, new HashSet<>());
+        if (!parent.fields.containsKey(chosen)) parent.fields.put(chosen, new HashSet<>());
+        parent.fields.get(chosen).add(node);
+        node.flag = true;
+        classFieldsGraph.put(receiverClass, node);
+        return node;
+    }
+
+    /**
      * 获取callStack对应的fragment, 如果当前的方法调用序列偏离了gadget chain, 则返回最近的fragment
      * @param callStack
      * @return
@@ -611,6 +651,119 @@ public class GadgetInfoRecord {
         if (classNode != null){
             GadgetNode newGadgetNode = new GadgetNode(invokedMethod, sootClass);
             classNode.addGadgetNode(newGadgetNode);
+        }
+    }
+
+    /**
+     * Whether the callee runs on the same object as the caller, so that no new class node is created for it.
+     * ScriptableObject.getProperty(obj, name) calls  obj.get(...) , which JDD resolves to IdScriptableObject.get: the
+     * receiver is the object the caller was given, not a field of a new one. False unless the Rhino rules are active.
+     */
+    private static boolean isSameObjectHop(SootMethod caller, SootMethod callee) {
+        return container.BasicDataContainer.rhinoGetProperty != null
+                && caller == container.BasicDataContainer.rhinoGetProperty
+                && callee == container.BasicDataContainer.rhinoIdsoGet;
+    }
+
+    /**
+     * Field sources found for a receiver held by an object of class holder. Scriptable.getPrototype() /
+     * getParentScope() on a NativeJavaObject return its own fields prototype / parent, but JDD resolves the interface
+     * call to ScriptableObject's implementation and so reports ScriptableObject.prototypeObject / parentScopeObject,
+     * which a NativeJavaObject (not a ScriptableObject) does not have; SourceNode then silently replaces the holder
+     * class by ScriptableObject, a class the IOCD has no record for. Those two are mapped back to the
+     * NativeJavaObject fields. Everything else is returned as it is.
+     */
+    private static HashSet<SourceNode> remapSources(HashSet<SourceNode> sources, SootClass holder) {
+        if (container.BasicDataContainer.rhinoNjo == null || holder == null || sources.isEmpty()) return sources;
+        if (!holder.equals(container.BasicDataContainer.rhinoNjo)
+                && !ClassRelationshipUtils.isSubClassOf(holder, container.BasicDataContainer.rhinoNjo)) return sources;
+        HashSet<SourceNode> ret = new HashSet<>();
+        for (SourceNode source : sources) {
+            SootField to = null;
+            if (source.field != null && source.field.size() == 1) {
+                SootField from = source.field.getFirst();
+                if (from.equals(container.BasicDataContainer.rhinoSoPrototype)) to = container.BasicDataContainer.rhinoNjoPrototype;
+                else if (from.equals(container.BasicDataContainer.rhinoSoParentScope)) to = container.BasicDataContainer.rhinoNjoParent;
+            }
+            if (to == null) {
+                ret.add(source);
+            } else {
+                LinkedList<SootField> fields = new LinkedList<>();
+                fields.add(to);
+                SourceNode mapped = new SourceNode(fields, holder);
+                mapped.classId = source.classId;
+                ret.add(mapped);
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * Completes this record for the MozillaRhino1 chain (it has NativeJavaMethod.call and the class records NativeError
+     * and NativeJavaMethod). The NativeJavaMethod that NativeJavaMethod.call runs on is the getter of a GetterSlot,
+     * which JDD does not model: the holder IdScriptableObject it reports has no class record. The class record
+     * ScriptableObject$GetterSlot (source: NativeError.lastAdded) is added between NativeError and NativeJavaMethod and
+     * NativeJavaMethod's source becomes GetterSlot.getter; the records stay ordered parents first. The NativeJavaObject
+     * record (receiver of unwrap()) becomes the value of NativeError.prototypeObject, because JDD records it under the
+     * field val of the root object, which NativeError already uses. Other chains and other programs: unchanged.
+     */
+    public void completeIocd() {
+        SootClass getterSlotClass = container.BasicDataContainer.rhinoGetterSlot;
+        if (getterSlotClass == null || !gadgets.contains(container.BasicDataContainer.rhinoNjmCall)) return;
+        ClassNode nativeJavaMethod = null, nativeError = null;
+        for (ClassNode node : classFieldsGraph.values()) {
+            if (node.sootClass.getName().equals("org.mozilla.javascript.NativeJavaMethod")) nativeJavaMethod = node;
+            if (node.sootClass.getName().equals("org.mozilla.javascript.NativeError")) nativeError = node;
+        }
+        if (nativeJavaMethod == null || nativeError == null || classFieldsGraph.containsKey(getterSlotClass)) return;
+
+        LinkedList<SootField> slotFields = new LinkedList<>();
+        slotFields.add(container.BasicDataContainer.rhinoSoLastAdded);
+        SourceNode slotSource = new SourceNode(slotFields, nativeError.sootClass);
+        ClassNode slot = new ClassNode(nativeError, nativeJavaMethod.caller, getterSlotClass, slotSource, this, new HashSet<>());
+        slot.flag = true;
+        if (!nativeError.fields.containsKey(slotSource)) nativeError.fields.put(slotSource, new HashSet<>());
+        nativeError.fields.get(slotSource).add(slot);
+
+        if (nativeJavaMethod.rootClassNode != null && nativeJavaMethod.source != null
+                && nativeJavaMethod.rootClassNode.fields.containsKey(nativeJavaMethod.source)) {
+            HashSet<ClassNode> siblings = nativeJavaMethod.rootClassNode.fields.get(nativeJavaMethod.source);
+            siblings.remove(nativeJavaMethod);
+            if (siblings.isEmpty()) nativeJavaMethod.rootClassNode.fields.remove(nativeJavaMethod.source);
+        }
+        LinkedList<SootField> getterFields = new LinkedList<>();
+        getterFields.add(container.BasicDataContainer.rhinoGetterSlotGetter);
+        SourceNode getterSource = new SourceNode(getterFields, getterSlotClass);
+        nativeJavaMethod.source = getterSource;
+        nativeJavaMethod.rootClassNode = slot;
+        if (!slot.fields.containsKey(getterSource)) slot.fields.put(getterSource, new HashSet<>());
+        slot.fields.get(getterSource).add(nativeJavaMethod);
+
+        LinkedHashMap<SootClass, ClassNode> ordered = new LinkedHashMap<>();
+        for (Map.Entry<SootClass, ClassNode> entry : classFieldsGraph.entrySet()) {
+            if (entry.getValue() == nativeJavaMethod) ordered.put(getterSlotClass, slot);
+            ordered.put(entry.getKey(), entry.getValue());
+        }
+        classFieldsGraph.clear();
+        classFieldsGraph.putAll(ordered);
+
+        ClassNode wrapper = null;
+        for (ClassNode node : classFieldsGraph.values())
+            if (node.sootClass.getName().equals("org.mozilla.javascript.NativeJavaObject")) wrapper = node;
+        if (wrapper != null && container.BasicDataContainer.rhinoSoPrototype != null && wrapper.rootClassNode != nativeError) {
+            if (wrapper.rootClassNode != null && wrapper.source != null
+                    && wrapper.rootClassNode.fields.containsKey(wrapper.source)) {
+                HashSet<ClassNode> siblings = wrapper.rootClassNode.fields.get(wrapper.source);
+                siblings.remove(wrapper);
+                if (siblings.isEmpty()) wrapper.rootClassNode.fields.remove(wrapper.source);
+            }
+            LinkedList<SootField> prototypeFields = new LinkedList<>();
+            prototypeFields.add(container.BasicDataContainer.rhinoSoPrototype);
+            SourceNode prototypeSource = new SourceNode(prototypeFields, nativeError.sootClass);
+            wrapper.source = prototypeSource;
+            wrapper.rootClassNode = nativeError;
+            if (!nativeError.fields.containsKey(prototypeSource)) nativeError.fields.put(prototypeSource, new HashSet<>());
+            nativeError.fields.get(prototypeSource).add(wrapper);
         }
     }
 }

@@ -118,6 +118,9 @@ public class TransformerUtils {
 
             LinkedList<MethodRecord> tmpMRs = new LinkedList<>();
             LinkedList<SootMethod> currentCallStack = tmpClassNode.gadgets;
+            HashSet<String> chainClassNames = new HashSet<>();
+            for (ClassNode chainClassNode : gadgetInfoRecord.classFieldsGraph.values())
+                chainClassNames.add(chainClassNode.sootClass.getName());
             LinkedList<ConditionRecord> tmpAllConditions = new LinkedList<>();
             for (SootMethod sootMethod: currentCallStack){
                 GadgetNode gadgetNode = gadgetInfoRecord.gadgetNodesMap.get(sootMethod);
@@ -131,6 +134,8 @@ public class TransformerUtils {
                     if ((conditionRecord.conditionValue.isEmpty() && conditionRecord.conditionName.isEmpty())
                             && ((conditionRecord.type & ConditionNode.UNCONTROLLABLE) == 0))
                         continue;
+                    if (hasUnsettableCondition(conditionRecord, chainClassNames))
+                        continue;
                     tmpAllConditions.add(conditionRecord);
                 }
 
@@ -138,6 +143,8 @@ public class TransformerUtils {
                     ConditionRecord conditionRecord = makeInitConditionRecord(conditionNode, tmpMR, false);
                     if ((conditionRecord.conditionValue.isEmpty() && conditionRecord.conditionName.isEmpty())
                             && ((conditionRecord.type & ConditionNode.UNCONTROLLABLE) == 0))
+                        continue;
+                    if (hasUnsettableCondition(conditionRecord, chainClassNames))
                         continue;
                     tmpAllConditions.add(conditionRecord);
                 }
@@ -737,5 +744,33 @@ public class TransformerUtils {
         sinkInstRecord.setFlag(flag);
 
         instruments.getSinkRecords().add(sinkInstRecord);
+    }
+
+    /**
+     * Whether a condition has a variable the fuzzer cannot set, in which case it is left out of the IOCD instead of
+     * making the fuzzer give up every condition of the chain. Two cases: the variable is a non-static field of a class
+     * that has no class record in the chain (JDD's source heuristics pick a Map implementation for a Map field,
+     * BeanProperty, ...), or the condition compares a field with an instanceof type the field's type cannot hold (JDD
+     * records  member instanceof BeanProperty  for the Map field the member was looked up in, and the fuzzer then tries
+     * to set a Map field to a BeanProperty). Always false unless the Rhino rules are active.
+     */
+    private static boolean hasUnsettableCondition(ConditionRecord condition, Set<String> chainClasses) {
+        if (BasicDataContainer.rhinoNjoGet == null || condition == null || condition.conditionName == null) return false;
+        String instanceOfType = condition.conditionValue == null ? null : condition.conditionValue.get("class soot.RefType");
+        for (FieldRecord field : condition.conditionName.values()) {
+            if (field != null && instanceOfType != null && field.fieldType != null) {
+                SootClass valueClass = Scene.v().getSootClassUnsafe(instanceOfType), fieldClass = Scene.v().getSootClassUnsafe(field.fieldType);
+                if (valueClass != null && fieldClass != null && !valueClass.equals(fieldClass)
+                        && !ClassRelationshipUtils.isSubClassOf(valueClass, fieldClass)) return true;
+            }
+            if (field == null || field.classBelongTo == null || chainClasses.contains(field.classBelongTo)) continue;
+            try {
+                if (field.sig != null && Scene.v().containsField(field.sig) && Scene.v().getField(field.sig).isStatic()) continue;
+            } catch (Exception e) {
+                // not resolvable: treated as an instance field
+            }
+            return true;
+        }
+        return false;
     }
 }

@@ -239,7 +239,7 @@ public class Fragment {
             return;
 
         if (!state.equals(FRAGMENT_STATE.SINK) & !state.equals(FRAGMENT_STATE.SOURCE)){
-            if (gadgets.size() > BasicDataContainer.polyLenLimit){
+            if (gadgets.size() > container.BasicDataContainer.polyLenLimitFor(head)){
                 flag = false;
                 return;
             }

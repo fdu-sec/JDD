@@ -10,6 +10,7 @@ import cfg.CFG;
 import container.BasicDataContainer;
 import container.FieldsContainer;
 import container.FragmentsContainer;
+import container.ReflectionEdges;
 import dataflow.node.SourceNode;
 import dataflow.node.MethodDescriptor;
 import dataflow.node.UndeterminedFieldNode;
@@ -228,7 +229,7 @@ public class DataFlowAnalysisUtils {
         if (!tfNode.containsInvoke())   return;
         InvokeExpr invokeExpr = tfNode.getUnitInvokeExpr();
 
-        for(int ind : invokedDescriptor.paramBeTainted.keySet()){
+        for(int ind : (ReflectionEdges.isEdgeCallSite(tfNode) ? java.util.Collections.<Integer>emptySet() : invokedDescriptor.paramBeTainted.keySet())){
             if(ind == -1){  // TODO: 添加针对 <init> 的处理
                 ValueBox thisValueBox = Parameter.getThisValueBox(tfNode.node);
                 if(thisValueBox != null){
@@ -279,7 +280,7 @@ public class DataFlowAnalysisUtils {
         // 从 call frame 中更新本地变量
         // 先暂存，最终再更新到本地，因为这个循环可能执行多次！（cha无法确定调用的方法具体是哪个）
         // taint传播
-        for(int ind : invokedDescriptor.paramBeTainted.keySet()){
+        for(int ind : (ReflectionEdges.isEdgeCallSite(tfNode) ? java.util.Collections.<Integer>emptySet() : invokedDescriptor.paramBeTainted.keySet())){
             if(ind == -1){  // TODO: 添加针对 <init> 的处理
                 ValueBox thisValueBox = Parameter.getThisValueBox(tfNode.node);
                 if(thisValueBox != null){
@@ -381,6 +382,27 @@ public class DataFlowAnalysisUtils {
                                                        SootMethod invokedMethod, HashMap<Integer, Pointer> inputCallFrame,
                                                        TransformableNode tfNode) {
         MethodDescriptor invokedDescriptor = BasicDataContainer.getOrCreateDescriptor(invokedMethod);
+        if (ReflectionEdges.isEdgeCallSite(tfNode)) {
+            // m.invoke(obj, args) resolved to invokedMethod: the call arguments are (obj, Object[]), not the callee's
+            // parameters. Conservatively, a tainted packed array taints every parameter; no pointer info is passed.
+            invokedDescriptor.paramValInfo = new HashMap<>();
+            invokedDescriptor.sourcesTaintGraph.entryMethod = descriptor.sourcesTaintGraph.entryMethod;
+            invokedDescriptor.inputParamMapTaints = new HashMap<>();
+            invokedDescriptor.fieldsParamIndexRecord = new HashMap<>();
+            Value targetObj = currentInvokeExpr.getArg(0);
+            Value packedArgs = currentInvokeExpr.getArg(1);
+            if (!invokedMethod.isStatic()) {
+                invokedDescriptor.inputParamMapTaints.put(-1, descriptor.getAllTaintsAboutThisValue(targetObj));
+                if (BasicDataContainer.infosCollect)
+                    invokedDescriptor.fieldsParamIndexRecord.put(-1, descriptor.sourcesTaintGraph.matchTaintedSources(targetObj));
+            }
+            for (int i = 0; i < invokedMethod.getParameterCount(); i++) {
+                invokedDescriptor.inputParamMapTaints.put(i, descriptor.getAllTaintsAboutThisValue(packedArgs));
+                if (BasicDataContainer.infosCollect)
+                    invokedDescriptor.fieldsParamIndexRecord.put(i, descriptor.sourcesTaintGraph.matchTaintedSources(packedArgs));
+            }
+            return invokedDescriptor;
+        }
         // Step1: 指针信息传递
         invokedDescriptor.paramValInfo = inputCallFrame;
         // 在一次分析内entryMethod相同, 直接继承
@@ -516,6 +538,8 @@ public class DataFlowAnalysisUtils {
                                                                         TransformableNode tfNode,
                                                                  HashMap<Integer, Pointer> inputCallFrame,
                                                                  LinkedList<SootMethod> callStack){
+        if (ReflectionEdges.isEdgeCallSite(tfNode))
+            return ReflectionEdges.targetsOf(tfNode);
         InvokeExpr invokeExpr = tfNode.getUnitInvokeExpr();
         String invokedMethodSubSig = invokeExpr.getMethod().getSubSignature();
         SootClass expectClass = getInvokedMethodClassByPointerAnalysis(inputCallFrame);
@@ -596,6 +620,8 @@ public class DataFlowAnalysisUtils {
                                                         HashMap<Integer, Pointer> inputCallFrame,
                                                         LinkedList<SootMethod> callStack,
                                                         GadgetInfoRecord gadgetInfoRecord){
+        if (ReflectionEdges.isEdgeCallSite(tfNode))
+            return ReflectionEdges.targetsOf(tfNode);
         HashSet<SootMethod> ret = new HashSet<>();
         SootMethod invokedMethod = tfNode.getUnitInvokeExpr().getMethod();
         SootMethod next = getNextMethod(callStack, gadgetInfoRecord.gadgets);
@@ -677,6 +703,8 @@ public class DataFlowAnalysisUtils {
      * @return
      */
     public static HashSet<SootMethod> getInvokedMethods(TransformableNode tfNode, MethodDescriptor descriptor){
+        if (ReflectionEdges.isEdgeCallSite(tfNode))
+            return ReflectionEdges.targetsOf(tfNode);
         SootMethod invokedMethodViaNode = null;
 
         HashMap<Integer, Pointer> inputCallFrame = getMethodBaseParamInfo(tfNode, descriptor);
@@ -741,6 +769,8 @@ public class DataFlowAnalysisUtils {
      * @return
      */
     public static boolean continueCheck(TransformableNode tfNode, MethodDescriptor descriptor) {
+        if (ReflectionEdges.isEdgeCallSite(tfNode))
+            return ReflectionEdges.argsTainted(tfNode, descriptor);
         ValueBox thisBox = Parameter.getThisValueBox(tfNode.node);
         InvokeExpr currentInvokeExpr = tfNode.getUnitInvokeExpr();
         SootClass sootClass = currentInvokeExpr.getMethod().getDeclaringClass();

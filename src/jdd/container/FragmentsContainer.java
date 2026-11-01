@@ -158,9 +158,23 @@ public class FragmentsContainer {
                 && FragmentsContainer.singleHashFixedClass.contains(sootMethod.getDeclaringClass());
     }
 
+    /**
+     * The dynamic method a fragment's end is matched with when fragments are linked. A fragment is linked to the heads
+     * it reaches by comparing its end with their preLinkableMethods, which hold the top-most declaration of the method.
+     * For the MozillaRhino1 chain the end is Function.call, while the heads it reaches list the top-most declaration
+     * Callable.call (Function redeclares call), so the exact comparison fails; for that one end the top-most
+     * declaration is used instead. Every other fragment is matched with its own end.
+     */
+    public static SootMethod linkEnd(Fragment fragment) {
+        if (BasicDataContainer.rhinoFunctionCall != null && fragment.end == BasicDataContainer.rhinoFunctionCall
+                && !fragment.gadgets.isEmpty() && fragment.gadgets.getLast() == BasicDataContainer.rhinoGetImpl)
+            return BasicDataContainer.rhinoCallableCall;
+        return fragment.end;
+    }
+
     public static HashSet<Fragment> getLinkableSinkFragments(Fragment freeStateFragment){
         HashSet<Fragment> ret = new HashSet<>();
-        SootMethod callerMethod = freeStateFragment.end;
+        SootMethod callerMethod = linkEnd(freeStateFragment);
         for (Fragment recordedSinkFragment: sinkFragments){
             if (recordedSinkFragment.head.equals(freeStateFragment.head))
                 continue;
