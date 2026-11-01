@@ -1,0 +1,13 @@
+# Super calls followed with their static (invokespecial) target (see container/SuperCallSites.java).
+# One method per line: for its  super.m(...)  call, where m is the method itself, and for its calls of private methods
+# of its own class, the method named in the invokespecial instruction is added to the resolved candidates (all
+# candidates resolved as before are kept) and is not dropped by the fragment de-duplication. Lines that are not in the
+# analysed program are ignored, so listing a method never affects other applications.
+#
+# Rhino (MozillaRhino2): NativeJavaArray.get calls super.get(id, start), i.e. NativeJavaObject.get
+<org.mozilla.javascript.NativeJavaArray: java.lang.Object get(java.lang.String,org.mozilla.javascript.Scriptable)>
+# Rhino (MozillaRhino1): IdScriptableObject.get calls super.get(name, start), i.e. ScriptableObject.get
+<org.mozilla.javascript.IdScriptableObject: java.lang.Object get(java.lang.String,org.mozilla.javascript.Scriptable)>
+# Rhino (MozillaRhino1): ScriptableObject.get calls its private getImpl(name, 0, start); with an abstract subclass
+# (e.g. IdScriptableObject) as receiver type the call is otherwise resolved to nothing
+<org.mozilla.javascript.ScriptableObject: java.lang.Object get(java.lang.String,org.mozilla.javascript.Scriptable)>

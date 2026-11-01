@@ -46,7 +46,6 @@ import static util.ClassRelationshipUtils.isProxyMethod;
 
 @Slf4j
 public class SearchGadgetChains {
-    public static int timeThread = 30;
     public static DataflowDetect dataflowDetect = new DataflowDetect();
 
     public static void detect() throws Exception {
@@ -114,10 +113,11 @@ public class SearchGadgetChains {
 
                 @Override
                 protected void timeoutHandler() {
+                    BasicDataContainer.recordAnalysisTimeout(sootMethod);
                     log.error("Timeout when analyzing method" + sootMethod.getName() + ". Located in class"
                             + sootMethod.getDeclaringClass());
                 }
-            }.run(180);
+            }.run(BasicDataContainer.methodAnalysisTimeout);
         } catch (Exception e) {
             e.printStackTrace();
             descriptor.isEntry = false;
@@ -229,10 +229,11 @@ public class SearchGadgetChains {
 
                 @Override
                 protected void timeoutHandler() {
+                    BasicDataContainer.recordAnalysisTimeout(sootMethod);
                     log.error("Timeout when analyzing method" + sootMethod.getName() + ". Located in class"
                             + sootMethod.getDeclaringClass());
                 }
-            }.run(180);
+            }.run(BasicDataContainer.methodAnalysisTimeout);
         } catch (Exception e) {
             e.printStackTrace();
             descriptor.isEntry = false;
@@ -270,10 +271,11 @@ public class SearchGadgetChains {
 
                 @Override
                 protected void timeoutHandler() {
+                    BasicDataContainer.recordAnalysisTimeout(headMtd);
                     log.error("Timeout when analyzing method" + headMtd.getName() + ". Located in class"
                             + (thisClass==null? headMtd.getDeclaringClass(): thisClass));
                 }
-            }.run(timeThread);
+            }.run(BasicDataContainer.headAnalysisTimeout);
         } catch (Exception e) {
             e.printStackTrace();
             descriptor.isEntry = false;
@@ -314,7 +316,7 @@ public class SearchGadgetChains {
             newSinkFragments.clear();
             HashSet<Fragment> toDelete = new HashSet<>();
             for (Fragment freeStateFragment : freeStateFragments) {
-                if (!dynamicMethods.contains(freeStateFragment.end))
+                if (!dynamicMethods.contains(FragmentsContainer.linkEnd(freeStateFragment)))
                     continue;
 
                 HashSet<Fragment> addSinkFragments = dataflowDetect.linkFreeStateFragments(freeStateFragment);
@@ -397,6 +399,7 @@ public class SearchGadgetChains {
 
                 if (gadgetInfoRecord != null) {
                     inferGadgetsInfos(gadgetInfoRecord);
+                    gadgetInfoRecord.completeIocd();
                     if (gadgetInfoRecord.flag)
                         count++;
                     try {
@@ -432,10 +435,11 @@ public class SearchGadgetChains {
 
                 @Override
                 protected void timeoutHandler() {
+                    BasicDataContainer.recordAnalysisTimeout(sourceGadget);
                     log.error("Timeout when analyzing method" + sourceGadget.getName() + ". Located in class"
                             + sourceGadget.getDeclaringClass());
                 }
-            }.run(timeThread);
+            }.run(BasicDataContainer.headAnalysisTimeout);
         } catch (Throwable e) {
             e.printStackTrace();
             descriptor.isEntry = false;

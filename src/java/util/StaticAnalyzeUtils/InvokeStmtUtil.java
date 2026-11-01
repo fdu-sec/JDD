@@ -85,6 +85,18 @@ public class InvokeStmtUtil {
                 ret.add(tmpInvokedMethod);
         }
 
+        return addSuperCallTarget(ret, tfNode);
+    }
+
+    /**
+     * super.m(...) in an override listed in superCalls (container.SuperCallSites): invokespecial is statically bound,
+     * but the receiver-class resolution above finds the override itself (which the fragment de-duplication drops).
+     * Add the method named in the call to the resolved candidates; everything resolved above is kept unchanged.
+     * Not a listed super call: ret is returned as it is.
+     */
+    private static HashSet<SootMethod> addSuperCallTarget(HashSet<SootMethod> ret, TransformableNode tfNode){
+        if (container.SuperCallSites.isSuperCall(tfNode))
+            ret.add(tfNode.getUnitInvokeExpr().getMethod());
         return ret;
     }
 
@@ -117,7 +129,7 @@ public class InvokeStmtUtil {
             }
         }
         if (sameSubClasses.isEmpty())
-            return ret;
+            return addSuperCallTarget(ret, tfNode);
 
         for (SootClass expectClass: sameSubClasses){
             // 直接取方法, 如果没有, 则查找父类

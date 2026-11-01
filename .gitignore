@@ -7,3 +7,8 @@ time-measurement
 testExample
 JDD.iml
 config/config.properties
+# Not part of the repository: jar sets, run results and build outputs of the JDD-Fuzzer module and its end-to-end runs
+data/
+runs/
+JDD-Fuzzer/**/target/
+**/__pycache__/

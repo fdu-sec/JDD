@@ -121,7 +121,8 @@ public class AliasAndPointerRule implements Rule {
                     right = ((ArrayRef) right).getBase();
                 if (left instanceof ArrayRef)
                     left = ((ArrayRef) left).getBase();
-                recordPointer(right,left,descriptor);
+                if (!isNullAssignWithoutPointer(right, descriptor))
+                    recordPointer(right,left,descriptor);
                 if (BasicDataContainer.openAliasAnalysis){
                     Taint rightTaint = descriptor.getOrCreateTaint(right,null);
                     Taint leftTaint = descriptor.getOrCreateTaint(left,null);
@@ -149,6 +150,23 @@ public class AliasAndPointerRule implements Rule {
         if (stmt instanceof NewExpr){
 
         }
+    }
+
+    /**
+     * Case-specific (MozillaRhino1). In NativeJavaMethod.call,  javaObject = null  (static-method branch) records a
+     * null_type pointer, and PointTable.setPointer keeps it over the java.lang.Object pointer of
+     * javaObject = ((Wrapper) o).unwrap()  whatever the order (java.lang.Object counts as the super class of the
+     * phantom class null_type), so the INVOKE sink in MemberBox.invoke rejects the target (type null_type).
+     * In this one method a null assignment records no pointer. Deliberately not global: that would change the pointer
+     * of every  x = null  in every analysed application.
+     */
+    private static final String NULL_ASSIGN_WITHOUT_POINTER_METHOD = "<org.mozilla.javascript.NativeJavaMethod: "
+            + "java.lang.Object call(org.mozilla.javascript.Context,org.mozilla.javascript.Scriptable,"
+            + "org.mozilla.javascript.Scriptable,java.lang.Object[])>";
+
+    private static boolean isNullAssignWithoutPointer(Value right, MethodDescriptor descriptor){
+        return right instanceof NullConstant && descriptor.sootMethod != null
+                && NULL_ASSIGN_WITHOUT_POINTER_METHOD.equals(descriptor.sootMethod.getSignature());
     }
 
     public static void recordPointer(Value from, Value to, MethodDescriptor descriptor){

@@ -3,6 +3,7 @@ package config;
 import container.BasicDataContainer;
 import container.FieldsContainer;
 import container.FragmentsContainer;
+import container.ReflectionEdges;
 import container.RulesContainer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -40,6 +41,9 @@ public class ConfigUtil {
     }
 
     public static void initContainer() throws IOException {
+        ReflectionEdges.init();
+        container.SuperCallSites.init();
+        BasicDataContainer.initRhinoChainInfos();
         BasicDataContainer.init();
         RulesContainer.init();
         FragmentsContainer.init();
@@ -307,8 +311,13 @@ public class ConfigUtil {
     public static void loadConfig(String filePath){
         try{
 
-            if (isOnServer()){
-                filePath = "/home/cbf/dvd-evaluation/evaluation/config/config.properties";
+            // -Djdd.config=<file> overrides the config file. The authors' server path is only used if it exists,
+            // otherwise every Linux run would look for /home/cbf/... and fail.
+            String serverConfig = "/home/cbf/dvd-evaluation/evaluation/config/config.properties";
+            if (System.getProperty("jdd.config") != null){
+                filePath = System.getProperty("jdd.config");
+            } else if (isOnServer() && new File(serverConfig).exists()){
+                filePath = serverConfig;
             }
             log.info("filePath = "+filePath);
             Reader configReader = new FileReader(filePath);
@@ -334,6 +343,8 @@ public class ConfigUtil {
             RegularConfig.inputEXPInfosPath = getPathProperty(ConfigurationEnum.INPUT_EXP_PATH.toString());
             BasicDataContainer.chainLimit = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.CHAIN_LIMIT.toString(), "20"));
             BasicDataContainer.stackLenLimitNum = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.FRAGMENT_LEN_LIMIT.toString(), "6"));
+            BasicDataContainer.methodAnalysisTimeout = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.METHOD_ANALYSIS_TIMEOUT.toString(), "180"));
+            BasicDataContainer.headAnalysisTimeout = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.HEAD_ANALYSIS_TIMEOUT.toString(), "30"));
             RegularConfig.needSerializable = configProperties.getProperty(ConfigurationEnum.NEED_SERIALIZABLE.toString(), "true").equals("true");
             BasicDataContainer.needSerializable = RegularConfig.needSerializable;
             RegularConfig.outPutIOCD = configProperties.getProperty(ConfigurationEnum.OUTPUT_IOCD.toString(), "true").equals("true");

@@ -57,6 +57,28 @@ We've recently refactored JDD, resulting in improved performance in some applica
 - Dynamic proxies (need to switch to dpx branch)
 - Reflection
 
+### JDD-Fuzzer (Dynamic verification)
+
+The dynamic verification module is in [`JDD-Fuzzer/`](JDD-Fuzzer) (originally https://github.com/CFionaBF/JDD-Fuzzer):
+it fuzzes the IOCD of each detected gadget chain into an injection object, replays what it finds in an independent
+plain JVM, and counts the confirmed gadget chains. See [`JDD-Fuzzer/README.md`](JDD-Fuzzer/README.md) and
+[`JDD-Fuzzer/reproduction/`](JDD-Fuzzer/reproduction).
+
+### End to end: JDD → JDD-Fuzzer
+
+`JDD-Fuzzer/e2e/run_app_e2e.sh <app>` runs JDD on one application, then JDD-Fuzzer on exactly the IOCDs JDD produced,
+and reports how many of the detected gadget chains the fuzzer verified and the independent replay confirmed, with their
+IOCD ids. The settings of each application are in `JDD-Fuzzer/e2e/apps.tsv`. See
+[`JDD-Fuzzer/e2e/README.md`](JDD-Fuzzer/e2e/README.md).
+
+### Additions to the static analysis in this branch
+
+- `inPuts/config/reflectionEdges`: supplementary call edges for reflective calls Soot does not resolve.
+- `inPuts/config/superCalls`: `super.m()` call sites followed with their static target.
+- `config.properties`: `methodAnalysisTimeout` / `headAnalysisTimeout`, the per-method analysis budgets (seconds);
+  the analyses they cut are listed in `<outputDir>/analysisTimeouts.txt`.
+- `pom.xml`: builds a runnable `target/JDD-1.0-SNAPSHOT-jar-with-dependencies.jar` (`mvn package -DskipTests`).
+
 ### Datasets (A New Benchmark)
 - If you need the dataset, please send us an email (bfchen22@m.fudan.edu.cn) with the purpose. Thanks for understanding.
 - You can find the `IOCD` datasets in the `IOCDDatasets` directory.
